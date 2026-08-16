@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C3CDD51-EB78-4CD6-8C2A-BC3ABE5D664F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Pharmacy</RootNamespace>
+    <AssemblyName>Pharmacy</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.6.6.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessLogic\clsDrugBL.cs" />
+    <Compile Include="BusinessLogic\clsPatientBL.cs" />
+    <Compile Include="BusinessLogic\clsPharmacistBL.cs" />
+    <Compile Include="BusinessLogic\clsSupplierBL.cs" />
+    <Compile Include="clsCurrentSession.cs" />
+    <Compile Include="DataAccess\clsDataAccessSettings.cs" />
+    <Compile Include="DataAccess\clsDrugData.cs" />
+    <Compile Include="DataAccess\clsPatientData.cs" />
+    <Compile Include="DataAccess\clsPharmacistData.cs" />
+    <Compile Include="DataAccess\clsSupplierData.cs" />
+    <Compile Include="LoginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginScreen.Designer.cs">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\DrugScreens\AddDrugCmsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\AddDrugCmsScreen.Designer.cs">
+      <DependentUpon>AddDrugCmsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ArchiveCmsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ArchiveCmsScreen.Designer.cs">
+      <DependentUpon>ArchiveCmsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ConflictingDrugsCmsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ConflictingDrugsCmsScreen.Designer.cs">
+      <DependentUpon>ConflictingDrugsCmsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\DrugInfoScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\DrugInfoScreen.Designer.cs">
+      <DependentUpon>DrugInfoScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\PurchaseDrugScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\PurchaseDrugScreen.Designer.cs">
+      <DependentUpon>PurchaseDrugScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\PurchaseNewBatchScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\PurchaseNewBatchScreen.Designer.cs">
+      <DependentUpon>PurchaseNewBatchScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\PurchasePaymentInfoScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\PurchasePaymentInfoScreen.Designer.cs">
+      <DependentUpon>PurchasePaymentInfoScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\SearchDrugCmsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\SearchDrugCmsScreen.Designer.cs">
+      <DependentUpon>SearchDrugCmsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\SellDrugScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\SellDrugScreen.Designer.cs">
+      <DependentUpon>SellDrugScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ShowDispenseDrugCmsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ShowDispenseDrugCmsScreen.Designer.cs">
+      <DependentUpon>ShowDispenseDrugCmsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ShowDrugDetailsCmsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DrugScreens\ShowDrugDetailsCmsScreen.Designer.cs">
+      <DependentUpon>ShowDrugDetailsCmsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\AddNewPatientScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\AddNewPatientScreen.Designer.cs">
+      <DependentUpon>AddNewPatientScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\ManagePatientsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\ManagePatientsScreen.Designer.cs">
+      <DependentUpon>ManagePatientsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\PatientsListScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\PatientsListScreen.Designer.cs">
+      <DependentUpon>PatientsListScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\UpdatePatientScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PatientScreens\UpdatePatientScreen.Designer.cs">
+      <DependentUpon>UpdatePatientScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\AddNewPharmacistScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\AddNewPharmacistScreen.Designer.cs">
+      <DependentUpon>AddNewPharmacistScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\ManagePharmacistScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\ManagePharmacistScreen.Designer.cs">
+      <DependentUpon>ManagePharmacistScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\PharmacistsListScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\PharmacistsListScreen.Designer.cs">
+      <DependentUpon>PharmacistsListScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\UpdatePharmacistScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\PharmacistScreens\UpdatePharmacistScreen.Designer.cs">
+      <DependentUpon>UpdatePharmacistScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\AddNewSupplierScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\AddNewSupplierScreen.Designer.cs">
+      <DependentUpon>AddNewSupplierScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\ManageSuppliersScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\ManageSuppliersScreen.Designer.cs">
+      <DependentUpon>ManageSuppliersScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\SuppliersListScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\SuppliersListScreen.Designer.cs">
+      <DependentUpon>SuppliersListScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\UpdateSupplierScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierScreens\UpdateSupplierScreen.Designer.cs">
+      <DependentUpon>UpdateSupplierScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LoginScreen.resx">
+      <DependentUpon>LoginScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Screens\DrugScreens\AddDrugCmsScreen.resx">
+      <DependentUpon>AddDrugCmsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\ArchiveCmsScreen.resx">
+      <DependentUpon>ArchiveCmsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\ConflictingDrugsCmsScreen.resx">
+      <DependentUpon>ConflictingDrugsCmsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\DrugInfoScreen.resx">
+      <DependentUpon>DrugInfoScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\PurchaseDrugScreen.resx">
+      <DependentUpon>PurchaseDrugScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\PurchaseNewBatchScreen.resx">
+      <DependentUpon>PurchaseNewBatchScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\PurchasePaymentInfoScreen.resx">
+      <DependentUpon>PurchasePaymentInfoScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\SearchDrugCmsScreen.resx">
+      <DependentUpon>SearchDrugCmsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\SellDrugScreen.resx">
+      <DependentUpon>SellDrugScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\ShowDispenseDrugCmsScreen.resx">
+      <DependentUpon>ShowDispenseDrugCmsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DrugScreens\ShowDrugDetailsCmsScreen.resx">
+      <DependentUpon>ShowDrugDetailsCmsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PatientScreens\AddNewPatientScreen.resx">
+      <DependentUpon>AddNewPatientScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PatientScreens\ManagePatientsScreen.resx">
+      <DependentUpon>ManagePatientsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PatientScreens\PatientsListScreen.resx">
+      <DependentUpon>PatientsListScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PatientScreens\UpdatePatientScreen.resx">
+      <DependentUpon>UpdatePatientScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PharmacistScreens\AddNewPharmacistScreen.resx">
+      <DependentUpon>AddNewPharmacistScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PharmacistScreens\ManagePharmacistScreen.resx">
+      <DependentUpon>ManagePharmacistScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PharmacistScreens\PharmacistsListScreen.resx">
+      <DependentUpon>PharmacistsListScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\PharmacistScreens\UpdatePharmacistScreen.resx">
+      <DependentUpon>UpdatePharmacistScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SupplierScreens\AddNewSupplierScreen.resx">
+      <DependentUpon>AddNewSupplierScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SupplierScreens\ManageSuppliersScreen.resx">
+      <DependentUpon>ManageSuppliersScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SupplierScreens\SuppliersListScreen.resx">
+      <DependentUpon>SuppliersListScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SupplierScreens\UpdateSupplierScreen.resx">
+      <DependentUpon>UpdateSupplierScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
