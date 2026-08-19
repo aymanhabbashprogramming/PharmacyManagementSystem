@@ -727,7 +727,6 @@ namespace PharmacyApp.DataAccess
             if (saleItems == null || saleItems.Count == 0)
                 return false;
 
-            // 1. حساب إجمالي الفاتورة
             decimal totalAmount = 0;
             foreach (var item in saleItems)
             {
@@ -741,7 +740,6 @@ namespace PharmacyApp.DataAccess
 
                 try
                 {
-                    // 2. إدخال الفاتورة الرئيسية SaleInvoice والحصول على الـ ID
                     string insertInvoiceQuery = @"
                 INSERT INTO SaleInvoice (PatientID, PharmacistID, InvoiceDate, TotalAmount)
                 VALUES (@PatientID, @PharmacistID, @InvoiceDate, @TotalAmount);
@@ -769,7 +767,6 @@ namespace PharmacyApp.DataAccess
                         return false;
                     }
 
-                    // 3. التكرار على العناصر لإدخال التفاصيل SaleInvoiceDetail وحزم البيع SaleDetailBatch
                     string insertDetailQuery = @"
                 INSERT INTO SaleInvoiceDetail (SaleInvoiceID, DrugID, Quantity, UnitSellingPrice, TotalPrice)
                 VALUES (@SaleInvoiceID, @DrugID, @Quantity, @UnitSellingPrice, @TotalPrice);
@@ -781,7 +778,6 @@ namespace PharmacyApp.DataAccess
 
                     foreach (var item in saleItems)
                     {
-                        // أ: إدخال تفاصيل العنصر SaleInvoiceDetail
                         int saleInvoiceDetailID = 0;
                         using (SqlCommand detailCommand = new SqlCommand(insertDetailQuery, connection, transaction))
                         {
@@ -804,7 +800,6 @@ namespace PharmacyApp.DataAccess
                             return false;
                         }
 
-                        // ب: ربط التفاصيل بالحزمة المباعة SaleDetailBatch
                         using (SqlCommand batchCommand = new SqlCommand(insertBatchQuery, connection, transaction))
                         {
                             batchCommand.Parameters.AddWithValue("@SaleInvoiceDetailID", saleInvoiceDetailID);
@@ -815,13 +810,11 @@ namespace PharmacyApp.DataAccess
                         }
                     }
 
-                    // 4. تأكيد التغييرات في حال نجاح كل الخطوات
                     transaction.Commit();
                     return true;
                 }
                 catch
                 {
-                    // التراجع عن التغييرات وإعادة رمي الخطأ
                     transaction.Rollback();
                     throw;
                 }
