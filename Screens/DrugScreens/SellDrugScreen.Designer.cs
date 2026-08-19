@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -49,6 +51,10 @@
             this.txtPharmacistFullName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.dgvAvailableDrugs = new System.Windows.Forms.DataGridView();
+            this.colDrugName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BatchNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colConflict = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRestricted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsDrugOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiViewDrugDetails = new FontAwesome.Sharp.IconMenuItem();
             this.tsmiSearchDrug = new FontAwesome.Sharp.IconMenuItem();
@@ -79,10 +85,6 @@
             this.lblTotalDrugsIcon = new System.Windows.Forms.Label();
             this.lblConflictingDrugsIcon = new System.Windows.Forms.Label();
             this.lblSafeDrugsIcon = new System.Windows.Forms.Label();
-            this.colDrugName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BatchNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colConflict = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRestricted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbxPharmacistInfo.SuspendLayout();
@@ -305,6 +307,14 @@
             this.colConflict,
             this.colRestricted});
             this.dgvAvailableDrugs.ContextMenuStrip = this.cmsDrugOptions;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAvailableDrugs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAvailableDrugs.EnableHeadersVisualStyles = false;
             this.dgvAvailableDrugs.GridColor = System.Drawing.SystemColors.ControlText;
             this.dgvAvailableDrugs.Location = new System.Drawing.Point(12, 256);
@@ -317,6 +327,48 @@
             this.dgvAvailableDrugs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAvailableDrugs.Size = new System.Drawing.Size(659, 218);
             this.dgvAvailableDrugs.TabIndex = 44;
+            // 
+            // colDrugName
+            // 
+            this.colDrugName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDrugName.DataPropertyName = "DrugName";
+            this.colDrugName.FillWeight = 106.9519F;
+            this.colDrugName.HeaderText = "İlaç Adı";
+            this.colDrugName.MinimumWidth = 6;
+            this.colDrugName.Name = "colDrugName";
+            this.colDrugName.ReadOnly = true;
+            this.colDrugName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colDrugName.Width = 200;
+            // 
+            // BatchNumber
+            // 
+            this.BatchNumber.DataPropertyName = "BatchNumber";
+            this.BatchNumber.FillWeight = 97.6827F;
+            this.BatchNumber.HeaderText = "Seri No";
+            this.BatchNumber.MinimumWidth = 6;
+            this.BatchNumber.Name = "BatchNumber";
+            this.BatchNumber.ReadOnly = true;
+            this.BatchNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colConflict
+            // 
+            this.colConflict.DataPropertyName = "Conflict";
+            this.colConflict.FillWeight = 97.6827F;
+            this.colConflict.HeaderText = "Çakışma";
+            this.colConflict.MinimumWidth = 6;
+            this.colConflict.Name = "colConflict";
+            this.colConflict.ReadOnly = true;
+            this.colConflict.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colRestricted
+            // 
+            this.colRestricted.DataPropertyName = "Restricted";
+            this.colRestricted.FillWeight = 97.6827F;
+            this.colRestricted.HeaderText = "Reçeteli";
+            this.colRestricted.MinimumWidth = 6;
+            this.colRestricted.Name = "colRestricted";
+            this.colRestricted.ReadOnly = true;
+            this.colRestricted.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // cmsDrugOptions
             // 
@@ -435,18 +487,26 @@
             this.dgvDispensedDrugs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDispensedDrugs.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDispensedDrugs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDispensedDrugs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Yellow;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDispensedDrugs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDispensedDrugs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDispensedDrugs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
             this.dgvDispensedDrugs.ContextMenuStrip = this.cmsSelectedDrugsOptions;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDispensedDrugs.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDispensedDrugs.EnableHeadersVisualStyles = false;
             this.dgvDispensedDrugs.GridColor = System.Drawing.SystemColors.ControlText;
             this.dgvDispensedDrugs.Location = new System.Drawing.Point(689, 256);
@@ -649,48 +709,6 @@
             this.lblSafeDrugsIcon.Size = new System.Drawing.Size(30, 30);
             this.lblSafeDrugsIcon.TabIndex = 65;
             this.lblSafeDrugsIcon.Text = "      ";
-            // 
-            // colDrugName
-            // 
-            this.colDrugName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colDrugName.DataPropertyName = "DrugName";
-            this.colDrugName.FillWeight = 106.9519F;
-            this.colDrugName.HeaderText = "İlaç Adı";
-            this.colDrugName.MinimumWidth = 6;
-            this.colDrugName.Name = "colDrugName";
-            this.colDrugName.ReadOnly = true;
-            this.colDrugName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colDrugName.Width = 200;
-            // 
-            // BatchNumber
-            // 
-            this.BatchNumber.DataPropertyName = "BatchNumber";
-            this.BatchNumber.FillWeight = 97.6827F;
-            this.BatchNumber.HeaderText = "Seri No";
-            this.BatchNumber.MinimumWidth = 6;
-            this.BatchNumber.Name = "BatchNumber";
-            this.BatchNumber.ReadOnly = true;
-            this.BatchNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colConflict
-            // 
-            this.colConflict.DataPropertyName = "Conflict";
-            this.colConflict.FillWeight = 97.6827F;
-            this.colConflict.HeaderText = "Çakışma";
-            this.colConflict.MinimumWidth = 6;
-            this.colConflict.Name = "colConflict";
-            this.colConflict.ReadOnly = true;
-            this.colConflict.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colRestricted
-            // 
-            this.colRestricted.DataPropertyName = "Restricted";
-            this.colRestricted.FillWeight = 97.6827F;
-            this.colRestricted.HeaderText = "Reçeteli";
-            this.colRestricted.MinimumWidth = 6;
-            this.colRestricted.Name = "colRestricted";
-            this.colRestricted.ReadOnly = true;
-            this.colRestricted.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SellDrugScreen
             // 
