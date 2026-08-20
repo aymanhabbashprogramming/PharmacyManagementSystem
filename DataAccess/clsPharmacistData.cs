@@ -29,7 +29,6 @@ namespace PharmacyApp.DataAccess
 
             return isFound;
         }
-
         public struct stPharmacistInfo
         {
             public int PharmacistID { get; set; }
@@ -265,9 +264,6 @@ namespace PharmacyApp.DataAccess
 
             return pharmacistsList;
         }
-
-
-
         public static stPharmacistInfo GetPharmacistByID(int pharmacistID)
         {
             stPharmacistInfo pharmacist = new stPharmacistInfo();
@@ -303,7 +299,4 @@ namespace PharmacyApp.DataAccess
             return pharmacist;
         }
     }
-
-
-
 }
