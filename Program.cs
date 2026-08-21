@@ -16,7 +16,7 @@ namespace Pharmacy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Screens.PharmacistScreens.AddNewPharmacistScreen());
+            Application.Run(new Screens.PatientScreens.PatientsListScreen());
         }
     }
 }
