@@ -244,7 +244,7 @@
             // txtPharmacistPhone
             // 
             this.txtPharmacistPhone.BackColor = System.Drawing.Color.White;
-            this.txtPharmacistPhone.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPharmacistPhone.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPharmacistPhone.Location = new System.Drawing.Point(100, 56);
             this.txtPharmacistPhone.Multiline = true;
             this.txtPharmacistPhone.Name = "txtPharmacistPhone";
@@ -265,7 +265,7 @@
             // txtPharmacistFullName
             // 
             this.txtPharmacistFullName.BackColor = System.Drawing.Color.White;
-            this.txtPharmacistFullName.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPharmacistFullName.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPharmacistFullName.Location = new System.Drawing.Point(100, 21);
             this.txtPharmacistFullName.Multiline = true;
             this.txtPharmacistFullName.Name = "txtPharmacistFullName";
