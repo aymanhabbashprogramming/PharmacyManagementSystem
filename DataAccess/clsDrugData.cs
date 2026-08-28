@@ -68,6 +68,49 @@ namespace PharmacyApp.DataAccess
 
             return categoriesList;
         }
+        public static List<stDrugInfo> GetAllDrugs()
+        {
+            List<stDrugInfo> drugsList = new List<stDrugInfo>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                string query = "SELECT DrugID, DrugCategoryID, DrugName, IsRestricted, DailyDosage, RefillIntervalDays FROM Drug";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            stDrugInfo drug = new stDrugInfo
+                            {
+                                DrugID = Convert.ToInt32(reader["DrugID"]),
+                                DrugCategoryID = Convert.ToInt32(reader["DrugCategoryID"]),
+                                DrugName = reader["DrugName"].ToString(),
+                                IsRestricted = Convert.ToBoolean(reader["IsRestricted"]),
+                                DailyDosage = reader["DailyDosage"] == DBNull.Value ? null : reader["DailyDosage"].ToString(),
+                                RefillIntervalDays = reader["RefillIntervalDays"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["RefillIntervalDays"])
+                            };
+
+                            drugsList.Add(drug);
+                        }
+                    }
+                }
+            }
+
+            return drugsList;
+        }
+        public struct stDrugInfo
+        {
+            public int DrugID { get; set; }
+            public int DrugCategoryID { get; set; }
+            public string DrugName { get; set; }
+            public bool IsRestricted { get; set; }
+            public string DailyDosage { get; set; }
+            public int? RefillIntervalDays { get; set; }
+        }
         public static bool IsDrugNameExists(string drugName)
         {
             bool isFound = false;
@@ -92,15 +135,6 @@ namespace PharmacyApp.DataAccess
             }
 
             return isFound;
-        }
-        public struct stDrugInfo
-        {
-            public int DrugID { get; set; }
-            public int DrugCategoryID { get; set; }
-            public string DrugName { get; set; }
-            public bool IsRestricted { get; set; }
-            public string DailyDosage { get; set; }
-            public int? RefillIntervalDays { get; set; }
         }
         public static int AddNewDrug(stDrugInfo drugInfo)
         {
@@ -154,40 +188,6 @@ namespace PharmacyApp.DataAccess
             }
 
             return (rowsAffected > 0);
-        }
-        public static List<stDrugInfo> GetAllDrugs()
-        {
-            List<stDrugInfo> drugsList = new List<stDrugInfo>();
-
-            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-            {
-                string query = "SELECT DrugID, DrugCategoryID, DrugName, IsRestricted, DailyDosage, RefillIntervalDays FROM Drug";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    connection.Open();
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            stDrugInfo drug = new stDrugInfo
-                            {
-                                DrugID = Convert.ToInt32(reader["DrugID"]),
-                                DrugCategoryID = Convert.ToInt32(reader["DrugCategoryID"]),
-                                DrugName = reader["DrugName"].ToString(),
-                                IsRestricted = Convert.ToBoolean(reader["IsRestricted"]),
-                                DailyDosage = reader["DailyDosage"] == DBNull.Value ? null : reader["DailyDosage"].ToString(),
-                                RefillIntervalDays = reader["RefillIntervalDays"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["RefillIntervalDays"])
-                            };
-
-                            drugsList.Add(drug);
-                        }
-                    }
-                }
-            }
-
-            return drugsList;
         }
         public struct stPurchaseInvoiceInfo
         {
@@ -265,8 +265,9 @@ namespace PharmacyApp.DataAccess
         }
 
         public static bool SaveNewDrugPurchase(
-    stPurchaseInvoiceInfo invoiceInfo,
-    List<(stDrugInfo DrugInfo, stPurchaseInvoiceDetailInfo DetailInfo, List<int> ConflictingDrugIDs)> purchaseItems)
+        stPurchaseInvoiceInfo invoiceInfo,
+        List<(stDrugInfo DrugInfo, stPurchaseInvoiceDetailInfo DetailInfo, 
+        List<int> ConflictingDrugIDs)> purchaseItems)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {

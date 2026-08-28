@@ -111,8 +111,31 @@ namespace Pharmacy.Screens.DrugScreens
             txtInvoiceDateDetail.Text = _invoiceDate.ToString("MMMM - dddd", new System.Globalization.CultureInfo("en-US"));
          
         }
+
+        private void LoadCurrentPharmacistInfo()
+        {
+            try
+            {
+                if (clsCurrentSession.CurrentPharmacistID > 0)
+                {
+                    var pharmacist = clsPharmacistBL.GetPharmacistByID(clsCurrentSession.CurrentPharmacistID);
+                    if (pharmacist.PharmacistID != -1)
+                    {
+                        txtPharmacistFullName.Text = $"{pharmacist.FirstName} {pharmacist.LastName}".Trim();
+                        txtPharmacistPhone.Text = pharmacist.Phone;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Eczacı bilgisi yüklenirken hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void SellDrugScreen_Load(object sender, EventArgs e)
         {
+            clsCurrentSession.CurrentPharmacistID = 2;
+            LoadCurrentPharmacistInfo();
 
             SetupMenuIcons();
 

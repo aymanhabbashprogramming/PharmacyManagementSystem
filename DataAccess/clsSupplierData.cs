@@ -228,7 +228,7 @@ namespace PharmacyApp.DataAccess
 
             using (SqlConnection conn = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                string query = "SELECT Phone FROM Supplier ORDER BY CAST(Phone AS INT)";
+                string query = "SELECT Phone FROM Supplier ";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     conn.Open();
